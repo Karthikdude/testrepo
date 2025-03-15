@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRecon - Site Reserved</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pure-white: #ffffff;
+            --off-white: #f9f9f9;
+            --light-gray: #f2f2f2;
+            --medium-gray: #e6e6e6;
+            --text-gray: #666666;
+            --dark-gray: #333333;
+            --pure-black: #000000;
+            --rich-black: #111111;
+            --luxury-shadow: 0 30px 100px rgba(0, 0, 0, 0.07);
+            
+            /* Spacing variables */
+            --space-xs: clamp(0.75rem, 1vw, 1rem);
+            --space-sm: clamp(1rem, 2vw, 1.5rem);
+            --space-md: clamp(2rem, 4vw, 3rem);
+            --space-lg: clamp(3rem, 6vw, 5rem);
+            --space-xl: clamp(4rem, 8vw, 8rem);
+            --space-xxl: clamp(6rem, 10vw, 12rem);
+        }
+
+        [data-theme="dark"] {
+            --pure-white: #111111;
+            --off-white: #1a1a1a;
+            --light-gray: #222222;
+            --medium-gray: #333333;
+            --text-gray: #aaaaaa;
+            --dark-gray: #dddddd;
+            --pure-black: #ffffff;
+            --rich-black: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        
+        body {
+            background: var(--pure-white);
+            color: var(--rich-black);
+            min-height: 100vh;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            text-align: center;
+            padding: 5rem 2rem;
+            background-color: var(--pure-white);
+            box-shadow: var(--luxury-shadow);
+            z-index: 10;
+            position: relative;
+        }
+        
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .header-section {
+            margin-bottom: 2rem;
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .description-section {
+            order: 2;
+        }
+        
+        .contact-section {
+            order: 3;
+        }
+        
+        .owner-section {
+            order: 4;
+        }
+        
+        h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            margin-bottom: var(--space-xs);
+            color: var(--pure-black);
+            font-weight: 200;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        .tagline {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            margin-bottom: var(--space-sm);
+            color: var(--text-gray);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        .description {
+            margin: 2rem 0;
+            line-height: 2;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-gray);
+            letter-spacing: 0.05em;
+            font-size: 1.1rem;
+        }
+        
+        .description p {
+            margin-bottom: 2rem;
+        }
+        
+        .description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact {
+            display: inline-block;
+            background: var(--pure-black);
+            color: var(--pure-white);
+            padding: 1.5rem 4rem;
+            text-decoration: none;
+            font-weight: 300;
+            transition: all 0.4s ease;
+            letter-spacing: 0.2em;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .contact:hover {
+            background: var(--rich-black);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .owner-details {
+            margin-top: 3rem;
+            font-style: normal;
+            padding: 2rem 3rem;
+            background-color: var(--light-gray);
+            display: inline-block;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .owner-details p {
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+        
+        .owner-details p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .email {
+            color: var(--pure-black);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            position: relative;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .email:hover {
+            border-bottom: 1px solid var(--pure-black);
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--pure-white);
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(45deg);
+        }
+        
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--pure-black);
+        }
+
+        .logo {
+            margin-bottom: 2rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .logo-circle {
+            width: 140px;
+            height: 140px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-image {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .logo-image.light-logo {
+            display: block;
+        }
+        
+        .logo-image.dark-logo {
+            display: none;
+        }
+        
+        [data-theme="dark"] .logo-image.light-logo {
+            display: none;
+        }
+        
+        [data-theme="dark"] .logo-image.dark-logo {
+            display: block;
+        }
+        
+        .logo-text {
+            display: none;
+            color: var(--pure-white);
+            font-weight: 300;
+            font-size: 3rem;
+            letter-spacing: 0.05em;
+            z-index: 2;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                box-shadow: none;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 2rem;
+            }
+            
+            .content-wrapper {
+                gap: 2.5rem;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .logo-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo-image {
+                width: 80%;
+                height: 80%;
+            }
+            
+            .logo-text {
+                font-size: 2.5rem;
+            }
+            
+            .contact {
+                padding: 1.25rem 2.5rem;
+            }
+            
+            .owner-details {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .content-wrapper {
+                gap: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .logo-circle {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .logo-image {
+                width: 75%;
+                height: 75%;
+                padding: 0;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .contact {
+                padding: 1rem 2rem;
+                width: 100%;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            z-index: 10;
+            transition: color 0.3s ease;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+        }
+        
+        .footer:hover {
+            color: var(--pure-black);
+        }
+
+        /* Subtle animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .floating .logo-image {
+            animation: none; /* Prevent the logo from floating */
+            transform: translate(-50%, -50%); /* Ensure the logo stays centered during animation */
+        }
+        
+        /* Decorative elements */
+        .decorative-line {
+            width: 1px;
+            height: 60px;
+            background: var(--medium-gray);
+            margin: 1.5rem auto;
+        }
+        
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            width: 100%;
+        }
+        
+        .separator-line {
+            height: 1px;
+            width: 40px;
+            background: var(--medium-gray);
+        }
+        
+        .separator-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--pure-black);
+            margin: 0 0.75rem;
+            border-radius: 50%;
+        }
+        
+        /* Grid background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, var(--light-gray) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--light-gray) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+        </svg>
+    </button>
+    
+    <div class="main-container">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="header-section">
+                    <div class="logo">
+                        <div class="logo-circle floating">
+                            <img src="https://res.cloudinary.com/dfsac1z4v/image/upload/v1742038420/webrecon-logo-black_zysrgn.png" alt="WebRecon Logo" class="logo-image light-logo">
+                            <img src="https://res.cloudinary.com/dfsac1z4v/image/upload/v1742037933/webrecon-logo_dq5acl.png" alt="WebRecon Logo" class="logo-image dark-logo">
+                            <span class="logo-text">WR</span>
+                        </div>
+                    </div>
+                
+                    <h1>WebRecon</h1>
+                    <p class="tagline">Advanced Web Reconnaissance</p>
+                    <div class="separator">
+                        <div class="separator-line"></div>
+                        <div class="separator-dot"></div>
+                        <div class="separator-line"></div>
+                    </div>
+                </div>
+                
+                <div class="description-section">
+                    <div class="description">
+                        <p>This site is reserved for WebRecon.</p>
+                        <div class="decorative-line"></div>
+                        <p>Our platform is currently under development.</p>
+                        <div class="decorative-line"></div>
+                        <p>Please contact the owner for more information about our services and solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-section">
+                    <a href="mailto:karthikssathyan@wearehackerone.com" class="contact">
+                        <span>Get In Touch</span>
+                    </a>
+                </div>
+                
+                <div class="owner-section">
+                    <div class="owner-details">
+                        <p>Owner: Karthik S Sathyan</p>
+                        <p>Email: <a href="mailto:karthikssathyan@wearehackerone.com" class="email">karthikssathyan@wearehackerone.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        &copy; 2025 WebRecon - All Rights Reserved
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.documentElement;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? '' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+        }
+        
+        // Force the page to start from the top on load
+        window.onload = function() {
+            window.scrollTo(0, 0);
+            
+            // Ensure the header section is visible first
+            const headerSection = document.querySelector('.header-section');
+            if (headerSection) {
+                headerSection.style.display = 'block';
+            }
+        };
+    </script>
+</body>
+</html>
