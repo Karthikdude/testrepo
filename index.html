@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRecon - Site Reserved</title>
+    <title>WebRecon - Redirecting</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -101,16 +101,8 @@
             width: 100%;
         }
         
-        .description-section {
+        .message-section {
             order: 2;
-        }
-        
-        .contact-section {
-            order: 3;
-        }
-        
-        .owner-section {
-            order: 4;
         }
         
         h1 {
@@ -134,7 +126,7 @@
             text-transform: uppercase;
         }
         
-        .description {
+        .message {
             margin: 2rem 0;
             line-height: 2;
             font-weight: 300;
@@ -146,71 +138,25 @@
             font-size: 1.1rem;
         }
         
-        .description p {
+        .message p {
             margin-bottom: 2rem;
         }
         
-        .description p:last-child {
+        .message p:last-child {
             margin-bottom: 0;
         }
         
-        .contact {
-            display: inline-block;
-            background: var(--pure-black);
-            color: var(--pure-white);
-            padding: 1.5rem 4rem;
-            text-decoration: none;
-            font-weight: 300;
-            transition: all 0.4s ease;
-            letter-spacing: 0.2em;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-        
-        .contact:hover {
-            background: var(--rich-black);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .owner-details {
-            margin-top: 3rem;
-            font-style: normal;
-            padding: 2rem 3rem;
-            background-color: var(--light-gray);
-            display: inline-block;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 500px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .owner-details p {
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.1em;
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            font-weight: 300;
-        }
-        
-        .owner-details p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .email {
+        .redirect-link {
             color: var(--pure-black);
             text-decoration: none;
             font-weight: 400;
             transition: all 0.2s ease;
             position: relative;
-            border-bottom: 1px solid transparent;
+            border-bottom: 1px solid var(--pure-black);
         }
         
-        .email:hover {
-            border-bottom: 1px solid var(--pure-black);
+        .redirect-link:hover {
+            opacity: 0.8;
         }
         
         .theme-toggle {
@@ -258,6 +204,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
         
+        /* Update the logo-image class to ensure perfect centering */
         .logo-image {
             width: 85%;
             height: 85%;
@@ -333,14 +280,6 @@
             .logo-text {
                 font-size: 2.5rem;
             }
-            
-            .contact {
-                padding: 1.25rem 2.5rem;
-            }
-            
-            .owner-details {
-                padding: 1.5rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -371,12 +310,7 @@
                 font-size: 2rem;
             }
             
-            .contact {
-                padding: 1rem 2rem;
-                width: 100%;
-            }
-            
-            .description {
+            .message {
                 font-size: 1rem;
             }
         }
@@ -411,6 +345,24 @@
         .floating .logo-image {
             animation: none; /* Prevent the logo from floating */
             transform: translate(-50%, -50%); /* Ensure the logo stays centered during animation */
+        }
+        
+        /* Progress bar animation */
+        .progress-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto;
+            background-color: var(--light-gray);
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: var(--pure-black);
+            transition: width 0.5s ease;
         }
         
         /* Decorative elements */
@@ -480,8 +432,7 @@
                         </div>
                     </div>
                 
-                    <h1>WebRecon</h1>
-                    <p class="tagline">Advanced Web Reconnaissance</p>
+                    <h1>WebRecon Has Moved</h1>
                     <div class="separator">
                         <div class="separator-line"></div>
                         <div class="separator-dot"></div>
@@ -489,26 +440,15 @@
                     </div>
                 </div>
                 
-                <div class="description-section">
-                    <div class="description">
-                        <p>This site is reserved for WebRecon.</p>
+                <div class="message-section">
+                    <div class="message">
+                        <p>We are excited to announce that WebRecon has transitioned to a new platform to better serve you. You will be automatically redirected to our new website shortly.</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <p>If the redirection does not occur, please <a href="#" class="redirect-link">click here</a> to access the updated site.</p>
                         <div class="decorative-line"></div>
-                        <p>Our platform is currently under development.</p>
-                        <div class="decorative-line"></div>
-                        <p>Please contact the owner for more information about our services and solutions.</p>
-                    </div>
-                </div>
-                
-                <div class="contact-section">
-                    <a href="mailto:karthikssathyan@wearehackerone.com" class="contact">
-                        <span>Get In Touch</span>
-                    </a>
-                </div>
-                
-                <div class="owner-section">
-                    <div class="owner-details">
-                        <p>Owner: Karthik S Sathyan</p>
-                        <p>Email: <a href="mailto:karthikssathyan@wearehackerone.com" class="email">karthikssathyan@wearehackerone.com</a></p>
+                        <p>Thank you for your continued trust and support.</p>
                     </div>
                 </div>
             </div>
@@ -527,9 +467,22 @@
             body.setAttribute('data-theme', newTheme);
         }
         
-        // Force the page to start from the top on load
+        // Progress bar animation
         window.onload = function() {
-            window.scrollTo(0, 0);
+            const progressBar = document.getElementById('progressBar');
+            let width = 0;
+            const interval = setInterval(frame, 50);
+            
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    // Redirect would happen here
+                    // window.location.href = "https://new-website-url.com";
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }
             
             // Ensure the header section is visible first
             const headerSection = document.querySelector('.header-section');
@@ -539,4 +492,4 @@
         };
     </script>
 </body>
-</html>
+</html> 
